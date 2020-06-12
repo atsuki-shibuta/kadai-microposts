@@ -16,7 +16,7 @@
               <li class="dropdown-divider"></li>
               <li class="dropdown-item"><%= link_to 'Logout', logout_path, method: :delete %></li>
               <li class="dropdown-divider"></li>
-              <li class="dropdown-item"><%= link_to 'Likes', "/users/#{@user.id}/likes" %></li>
+              <li class="dropdown-item"><%= link_to 'Likes', '/users/#{@user.id}/likes' %></li>
             </ul>
           </li>
         <% else %>
