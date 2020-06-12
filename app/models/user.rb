@@ -32,7 +32,7 @@ class User < ApplicationRecord
   end
   
   has_many :favorites
-  has_many :favorite_microposts, through: :favorites, source: :micropost
+  has_many :likes, through: :favorites, source: :micropost
   
   def favorite(micropost)
     self.favorites.find_or_create_by(micropost_id: micropost.id)
@@ -44,7 +44,11 @@ class User < ApplicationRecord
   end
 
   def favorite?(micropost)
-    self.favorite_microposts.include?(micropost)
+    self.likes.include?(micropost)
+  end
+  
+  def feed_favorites
+    Micropost.where(id: self.like_ids)
   end
   
 end
